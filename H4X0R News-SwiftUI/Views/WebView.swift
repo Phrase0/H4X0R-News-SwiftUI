@@ -21,12 +21,10 @@ struct WebView: UIViewRepresentable{
         return WKWebView()
     }
     //這裡創建的UIViewType並非WebView，故需改成WKWebView
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        if let safeString = urlString{
-            if let url = URL(string: safeString){
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        if let safeString = urlString, let url = URL(string: safeString){
                 let request = URLRequest(url: url)
                 uiView.load(request)
-            }
         }
     }
 }
